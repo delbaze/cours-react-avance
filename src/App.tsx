@@ -1,4 +1,5 @@
 import Form from "./components/Form";
+import TodoList from "./components/TodoList";
 
 const validate = async (values: any) => {
   const errors: any = {};
@@ -15,7 +16,7 @@ const validate = async (values: any) => {
 function App() {
   return (
     <div>
-      <Form
+      {/* <Form
         initialValues={{ email: "", password: "" }}
         validate={validate}
         onSubmit={async (v) => {
@@ -57,7 +58,8 @@ function App() {
             </button>
           </form>
         )}
-      </Form>
+      </Form> */}
+      <TodoList />
     </div>
   );
 }
