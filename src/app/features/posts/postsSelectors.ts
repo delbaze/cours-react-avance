@@ -19,7 +19,7 @@ export const selectPostsWithUser = createSelector(
       const user = userEntities[post.userId];
       return {
         ...post,
-        user, // user complet ou null si pas trouvé
+        user, // user complet
       };
     })
 );
