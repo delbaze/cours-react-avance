@@ -1,4 +1,4 @@
-import type { ITodoItem } from "../app/types";
+import type { ITodoItem } from "../app/features/todos/types";
 
 function TodoItem({ todo, onToggle }: ITodoItem) {
   return (

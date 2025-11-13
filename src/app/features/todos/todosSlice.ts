@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { Todo, TodosState } from "../../types";
+import type { FilterType, Todo, TodosState } from "./types";
 import { nanoid } from "@reduxjs/toolkit";
 
 const initialState: TodosState = {
@@ -51,9 +51,17 @@ const todosSlice = createSlice({
       //   ),
       // };
     },
+    filterChanged: (state, action: PayloadAction<FilterType>) => {
+      state.filter = action.payload;
+    },
+
+    categoryFilterChanged: (state, action: PayloadAction<string | null>) => {
+      state.selectedCategory = action.payload;
+    },
     //
   },
 });
 
-export const { todoAdded, todoToggled } = todosSlice.actions;
+export const { todoAdded, todoToggled, filterChanged, categoryFilterChanged } =
+  todosSlice.actions;
 export default todosSlice.reducer;

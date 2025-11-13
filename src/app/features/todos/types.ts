@@ -18,3 +18,4 @@ export interface ITodoItem {
   todo: Todo;
   onToggle: (id: string) => void;
 }
+export type FilterType = "all" | "active" | "completed";

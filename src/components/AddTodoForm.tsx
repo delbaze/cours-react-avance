@@ -1,14 +1,16 @@
 import { useState, type FormEvent } from "react";
-import { useAppDispatch } from "../app/hooks";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { todoAdded } from "../app/features/todos/todosSlice";
+import { selectCategories } from "../app/features/categories/categoriesSelectors";
 
 function AddTodoForm() {
   const dispatch = useAppDispatch();
   // const categories = useAppSelector(....) // todo : la suite
-  const categories = [
-    { id: "projet", name: "Projet" },
-    { id: "autre", name: "Autre" },
-  ];
+  // const categories = [
+  //   { id: "projet", name: "Projet" },
+  //   { id: "autre", name: "Autre" },
+  // ];
+  const categories = useAppSelector(selectCategories);
   const [text, setText] = useState("");
   const [category, setCategory] = useState(categories[0]?.id ?? "");
 
