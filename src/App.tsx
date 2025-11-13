@@ -1,4 +1,5 @@
 import Form from "./components/Form";
+import PostList from "./components/PostList";
 import TodoList from "./components/TodoList";
 import UserList from "./components/UserList";
 
@@ -60,6 +61,7 @@ function App() {
           </form>
         )}
       </Form> */}
+      <PostList />
       <UserList />
       <TodoList />
     </div>
