@@ -1,3 +1,5 @@
+import type { EntityState } from "@reduxjs/toolkit";
+
 export interface User {
   id: number;
   name: string;
@@ -7,8 +9,7 @@ export interface User {
   website: string;
 }
 
-export interface UsersState {
-  items: User[];
+export interface UsersState extends EntityState<User, number> {
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }

@@ -1,10 +1,19 @@
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { fetchUsers } from "../app/features/users/usersThunks";
 import { useEffect } from "react";
-import { selectUsers } from "../app/features/users/usersSelectors";
+import {
+  selectAllUsers,
+  selectTotalUsers,
+  selectUserIds,
+  selectUsersState,
+} from "../app/features/users/usersSelectors";
 function UserList() {
   const dispatch = useAppDispatch();
-  const { error, items: users, status } = useAppSelector(selectUsers);
+  const { error, status } = useAppSelector(selectUsersState);
+  const users = useAppSelector(selectAllUsers);
+  const countUsers = useAppSelector(selectTotalUsers);
+  const usersIds = useAppSelector(selectUserIds);
+  console.log("TEST", usersIds);
 
   useEffect(() => {
     if (status === "idle") {
@@ -20,7 +29,7 @@ function UserList() {
   }
   return (
     <div>
-      <h2>Users ({users.length})</h2>
+      <h2>Users ({countUsers})</h2>
       <ul>
         {users.map((user) => (
           <li key={user.id}>
