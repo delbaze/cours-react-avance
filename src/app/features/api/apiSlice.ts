@@ -12,7 +12,7 @@ export const apiSlice = createApi({
       query: () => "/posts",
       providesTags: ["Post"],
     }),
-    addPost: builder.mutation({
+    addPost: builder.mutation<Post, Omit<Post, "id">>({
       query: (newPost) => ({
         url: "/posts",
         method: "POST",

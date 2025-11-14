@@ -1,3 +1,4 @@
+import AddPostForm from "./components/AddPostForm";
 import Form from "./components/Form";
 import PostList from "./components/PostList";
 import PostsList from "./components/PostsList";
@@ -62,6 +63,7 @@ function App() {
           </form>
         )}
       </Form> */}
+      <AddPostForm />
       <PostsList />
       <PostList />
       <UserList />
