@@ -6,6 +6,9 @@ import postsReducer from "./features/posts/postsSlice";
 import { apiSlice } from "./features/api/apiSlice";
 import { apiRMSlice } from "./features/api/apiRickMorty";
 import { favoritesSlice } from "./features/api/favoriteSlice";
+import { loggerMiddleware } from "./middlewares/logger.middleware";
+import { timestampMiddlare } from "./middlewares/timestamp.middleware";
+import { persistMiddleware } from "./middlewares/persist.middleware";
 
 export const store = configureStore({
   reducer: {
@@ -19,6 +22,9 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
+      .concat(timestampMiddlare)
+      .concat(loggerMiddleware)
+      .concat(persistMiddleware)
       .concat(apiSlice.middleware)
       .concat(apiRMSlice.middleware), // cache, refetch, invalidation, polling
 });

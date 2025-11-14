@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { ApiResponse, Character } from "./types";
+import { STORAGE_KEY } from "../../middlewares/persist.middleware";
 
 export const apiRMSlice = createApi({
   reducerPath: "apirm",
@@ -33,8 +34,11 @@ export const apiRMSlice = createApi({
     // Bonus : Favoris
     getFavorites: builder.query<number[], void>({
       queryFn: () => {
-        const favorites = JSON.parse(localStorage.getItem("favorites") || "[]") as number[];
-        return { data: favorites };
+        const favorites = JSON.parse(
+          localStorage.getItem(STORAGE_KEY) || "{favorites: {ids: []}}"
+        );
+        // const favorites = JSON.parse(localStorage.getItem("favorites") || "[]") as number[];
+        return { data: favorites?.favorites.ids };
       },
       providesTags: (result = []) => [
         ...result.map((id) => ({ type: "Favorite" as const, id })),
