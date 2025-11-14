@@ -31,3 +31,8 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+// pour useSyncExternalStore
+export const subscribe = store.subscribe;
+export const getSnapshotTodos = () => store.getState().todos.items;
+export const getServerSnapshot = () => []; //SSR

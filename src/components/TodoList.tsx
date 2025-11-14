@@ -1,3 +1,4 @@
+import { useSyncExternalStore } from "react";
 import { selectCategories } from "../app/features/categories/categoriesSelectors";
 import {
   selectFilteredTodos,
@@ -8,8 +9,14 @@ import { useAppDispatch, useAppSelector } from "../app/hooks";
 import AddTodoForm from "./AddTodoForm";
 import Filter from "./Filter";
 import TodoItem from "./TodoItem";
+import { getServerSnapshot, getSnapshotTodos, subscribe } from "../app/store";
 
 function TodoList() {
+  // const todos = useSyncExternalStore(
+  //   subscribe,
+  //   getSnapshotTodos,
+  //   getServerSnapshot
+  // );
   const todos = useAppSelector(selectFilteredTodos);
   //   const todos = useAppSelector(selectTodos);
   const dispatch = useAppDispatch();
